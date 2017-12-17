@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>科系下拉式選單HW6</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<p>請選擇學院</p>
+	<select id="collegeList"></select>
+	<p>當你選擇學院後，下列選單會列出屬於該學院的所有科系</p>
+	<select id="majorList"></select>
+	<script>
+		var colleges=["請選擇學院","商學院","國際科技與管理學院","工學院","資電學院","建設學院","人文社會學院","理學院","金融學院","經營管理學院","跨領域設計學院","建築專業學院","跨科系學習"];
+		var Business=["會計學系","國際經營與貿易學系","國際經營與貿易學系國際企業管理全英語學士班","財稅學系","合作經濟暨社會事業經營學系","統計學系","經濟學系","企業管理學系","行銷學系","國際企業管理學士學位學程(英語專班)","商學進修學士學位學程","財經法律研究所","科技管理碩士學位學程","產業碩士專班","商學專業碩士在職學位學程","商學博士學位學程"];
+		var TechnologyManagement=["澳洲墨爾本皇家理工大學商學與創新雙學士學位學程","美國聖荷西州立大學商學大數據分析雙學士學位學程","美國普渡大學電機資訊雙學士學位學程","西班牙薩拉戈薩大學物流供應鏈管理與創新創業雙碩士學位學程","國際經營管理碩士學位學程"];
+		var Engineering=["機械與電腦輔助工程學系","纖維與複合材料學系","工業工程與系統管理學系","化學工程學系","航太與系統工程學系","精密系統設計學士學位學程","電聲碩士學位學程","綠色能源科技碩士學位學程","創意設計碩士學位學程","材料與製造工程碩士在職專班","智能製造與工程管理碩士在職學位學程","機械與航空工程博士學位學程"];
+		var HPIEE=["資訊工程學系","電機工程學系","電子工程學系","自動控制工程學系","通訊工程學系","資電不分系榮譽班","資訊電機工程碩士在職學位學程","產業研發碩士專班","生醫資訊暨生醫工程碩士學位學程","視光科技碩士在職學位學程","電機與通訊工程博士學位學程","智慧聯網產業博士學位學程"];
+		var Construction=["土木工程學系","水利工程與資源保育學系","都市計畫與空間資訊學系","運輸與物流學系","土地管理學系","景觀與遊憩碩士學位學程","專案管理碩士在職學位學程","建設碩士在職學位學程","土木水利工程與建設規劃博士學位學程"];
+		var Social=["中國文學系","外國語文學系","歷史與文物研究所","公共事務與社會創新研究所"];
+		var Science=["應用數學系","程與科學學系","材料科學與工程學系","光電學系","微積分教學中心","物理教學研究中心"];
+		var Financial=["風險管理與保險學系","財務金融學系","財務工程與精算學士學位學程","金融碩士在職學位學程","金融博士學位學程"];
+		var BusinessManagement=["經營管理碩士在職學位學程","電子商務碩士在職專班"];
+		var Design=[];
+		var BuildingProfessional=["建築專業學院學士班","建築學士學位學程","室內設計學士學位學程","室內設計進修學士班","創新設計學士學位學程","建築碩士學位學程","建築碩士在職學位學程"];
+		var Cross=["通識教育中心","雲端學院","外語教學中心","國語文教學中心","全校國際生大一不分系學士班"];
+		$(document).ready(function(){
+			var i;
+			var $collegeString=$('select[id="collegeList"]');
+			for(i=0;i<colleges.length;i++){
+				$collegeString.append($("<option></option>").attr("value",i).text(colleges[i]));
+			}
+			var $majorString=$('select[id="majorList"]');
+			$collegeString.on("change",function(){
+				$majorString.text("");
+				switch($collegeString.val()){
+					case "1":
+						for(i=0;i<Business.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(Business[i]));
+						}
+						break;
+					case "2":
+						for(i=0;i<TechnologyManagement.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(TechnologyManagement[i]));
+						}
+						break;
+					case "3":
+						for(i=0;i<Engineering.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(Engineering[i]));
+						}
+						break;
+					case "4":
+						for(i=0;i<HPIEE.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(HPIEE[i]));
+						}
+						break;
+					case "5":
+						for(i=0;i<Construction.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(Construction[i]));
+						}
+						break;
+					case "6":
+						for(i=0;i<Social.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(Social[i]));
+						}
+						break;
+					case "7":
+						for(i=0;i<Science.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(Science[i]));
+						}
+						break;
+					case "8":
+						for(i=0;i<Financial.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(Financial[i]));
+						}
+						break;
+					case "9":
+						for(i=0;i<BusinessManagement.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(BusinessManagement[i]));
+						}
+						break;
+					case "10":
+						for(i=0;i<Design.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(Design[i]));
+						}
+						break;
+					case "11":
+						for(i=0;i<BuildingProfessional.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(BuildingProfessional[i]));
+						}
+						break;
+					case "12":
+						for(i=0;i<Cross.length;i++){
+							$majorString.append($("<option></option>").attr("value",i).text(Cross[i]));
+						}
+						break;
+				}
+			});
+		});
+	</script>
+</body>
+</html>
